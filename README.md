@@ -6,17 +6,17 @@ Deep Learning and Computer Vision Sign Language real-time Translator to English 
 
 Recognition model that streams video from a drone and detects and recognises sign language:
 ```
-recognize.py
+(env) $ python recognize.py
 ```
 
-Sign Language single symbol classification: multi-label classification ConvNet that distinguishes between the letters in the alphabet in sign language:
+Sign Language single symbol classification: multi-label classification ConvNet that distinguishes between the letters in the Sign Language Alphabet:
 ```
-classify.py
+(env) $ python classify.py
 ```
 
 Hand Detection: binary classification ConvNet that distinguishes between a hand or not:
 ```
-detect.py
+(env) $ python detect.py
 ```
 
 ---
@@ -27,18 +27,37 @@ detect.py
 
 ---
 
+### Instructions:
+
+```
+(env) $ pip install -r requirements.txt
+```
+
+```
+(env) $ cat requirements.txt
+keras
+tensorflow
+opencv-python
+tellopy
+image
+imutils
+pygame
+```
+
+---
+
 <table>
     <tr>
         <td align="center" width="200">
             <img src='img/dcu.png' width='120'/>
-            <div style='word-wrap: break-word;width:120px'>Dublin City University</div></td>
-        <td align="center" width="300">
+            <div style='word-wrap: break-word;width:120px;vertical-align:text-bottom'>Dublin City University</div></td>
+        <td align="center" width="200">
             <img src='img/insight-centre.png' width='120'/>
-            <div style='word-wrap: break-word;width:140px'>Insight Centre for Data Analytics</div>
+            <div style='word-wrap:break-word;width:140px;vertical-align:text-bottom'>Insight Centre for Data Analytics</div>
         </td>
-        <td align="center" width="300">
+        <td align="center" width="200">
             <img src='img/talent-garden.png' width='120'/>
-            <div style='word-wrap: break-word;width:120px'>Talent Garden Dublin</div>
+            <div style='word-wrap: break-word;width:120px;vertical-align:text-bottom'>Talent Garden Dublin</div>
         </td>
     </tr>
 </table>
