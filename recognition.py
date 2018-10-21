@@ -52,8 +52,8 @@ def recognize(image, models):
                             print ('Letter: %s, Index: %d, Prob: %f' % (letter, index, prob))
                             # RETURN LETTER, CONFIDENCE
                             return letter, prob
-                        except expression as identifier:
-                            pass
+                        except Exception as ex:
+                            print(ex)
                 time.sleep(0.025)
             
             print('No hand detected on this window')

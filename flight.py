@@ -27,7 +27,11 @@ def dronesign():
             
             # RECOGNITION
             print('Recognition')
-            letter, prob = recognize(image)
+            result = recognize(image)
+            if result is not None:
+                letter, prob = result
+                text = 'Letter %s, confidence: %.2f' % (letter, prob)
+                print(text)
 
             sleep(5)
             stop = raw_input('Stop? [y]')

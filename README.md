@@ -4,6 +4,8 @@
 
 Deep Learning and Computer Vision Sign Language real-time Translator to English using Drone technologies.
 
+[Slides presented at 2018 Atrovate AI Hackathon](https://docs.google.com/presentation/d/1ml_EiV_G3CXHPiY3m_m4Q0Z7lkE_enioA4KwIMQ4Fsk/edit#slide=id.g1f503fbdc0_1_60)
+
 ---
 
 Recognition model that streams video from a drone and detects and recognises sign language:

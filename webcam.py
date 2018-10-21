@@ -24,7 +24,7 @@ def webcam():
         
         ret_val, image = cam.read()
         
-        if iteration > 2:
+        if iteration > 5:
             # RECOGNITION
             print('Recognition')
             result = recognize(image, models)
@@ -35,7 +35,7 @@ def webcam():
         
         cv2.imshow('HackDrone', image)
 
-        sleep(3)
+        sleep(1)
 
         iteration += 1
 
