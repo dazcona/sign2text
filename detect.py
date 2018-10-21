@@ -10,6 +10,7 @@ from keras.layers import Dense, Conv2D, MaxPooling2D, Flatten, Dropout
 # Hyperparameters
 batch_size = 128
 epochs = 3
+DETECTION_THRESHOLD = 0.75
 
 def get_model():
 
@@ -125,7 +126,13 @@ def hand_detection(image, model):
     print('Classifying hand or not!')
     image =  image.reshape(image.shape[0], image.shape[1], 1)
     images = np.array([ image ])
-    return model.predict(images)
+    probs = model.predict(images)
+    prob = probs[0]
+    print('Prob %f' % (prob))
+
+    if prob > DETECTION_THRESHOLD:
+        return True
+    return False
 
 
 if __name__ == '__main__':

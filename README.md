@@ -1,4 +1,6 @@
-# Sign Language Reader
+# Sign2Text
+
+## Sign Language Reader
 
 Deep Learning and Computer Vision Sign Language real-time Translator to English using Drone technologies.
 
@@ -42,6 +44,19 @@ tellopy
 image
 imutils
 pygame
+av
+```
+
+---
+
+### Run it!:
+* DJI Tello Drone:
+```
+(env) $ python flight.py
+```
+* Your webcam:
+```
+(env) $ python webcam.py
 ```
 
 ---

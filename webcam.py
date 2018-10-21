@@ -3,6 +3,13 @@ from recognition import recognize
 from time import sleep
 from utils import load_models
 
+# Write some Text
+font                   = cv2.FONT_HERSHEY_SIMPLEX
+bottomLeftCornerOfText = (400, 700)
+fontScale              = 1
+fontColor              = (255, 255, 255)
+lineType               = 2
+
 def webcam():
 
     models = load_models()
@@ -10,18 +17,25 @@ def webcam():
     iteration = 0
 
     cam = cv2.VideoCapture(0)
+    cv2.namedWindow('HackDrone', cv2.WND_PROP_FULLSCREEN)
+    cv2.setWindowProperty('HackDrone',cv2.WND_PROP_FULLSCREEN,cv2.WINDOW_FULLSCREEN)
 
     while True:
         
         ret_val, image = cam.read()
-        cv2.imshow('HackDrone', image)
         
-        if iteration > 3:
+        if iteration > 2:
             # RECOGNITION
             print('Recognition')
-            letter, prob = recognize(image, models)
+            result = recognize(image, models)
+            if result is not None:
+                letter, prob = result
+                text = 'Letter %s, confidence: %.2f' % (letter, prob)
+                cv2.putText(image, text, bottomLeftCornerOfText, font, fontScale, fontColor, lineType)
+        
+        cv2.imshow('HackDrone', image)
 
-        sleep(2)
+        sleep(3)
 
         iteration += 1
 

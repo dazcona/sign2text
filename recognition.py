@@ -12,6 +12,7 @@ SIDE = 100
 winW, winH = 128, 128
 letters = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'K', 'L', 'M', 'N', 'O', 
 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y']
+RECOGNITION_THRESHOLD = 0.75
 
 def recognize(image, models):
 
@@ -41,12 +42,19 @@ def recognize(image, models):
                 window = window.reshape(window.shape[0], window.shape[1], 1)
                 # Classification
                 probs = classify_gesture(window, models['recognition_sign_model'])
-                index = np.argmax(probs[0])
                 prob = max(probs[0])
-                letter = letters[index]
-                print ('Letter: %s, Index: %d, Prob: %f' % (letter, index, prob))
-
-                return letter, prob
+                if prob > RECOGNITION_THRESHOLD:
+                    indexes = [i for i, p in enumerate(probs[0]) if p == prob]
+                    if len(indexes) > 0:
+                        try:
+                            index = indexes[0]
+                            letter = letters[index]
+                            print ('Letter: %s, Index: %d, Prob: %f' % (letter, index, prob))
+                            # RETURN LETTER, CONFIDENCE
+                            return letter, prob
+                        except expression as identifier:
+                            pass
+                time.sleep(0.025)
             
             print('No hand detected on this window')
 
