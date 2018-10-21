@@ -6,7 +6,6 @@ import keras
 from keras.utils import to_categorical
 from keras.models import Sequential
 from keras.layers import Dense, Conv2D, MaxPooling2D, Flatten, Dropout
-from keras.models import load_model
 
 # Hyperparameters
 batch_size = 128
@@ -70,7 +69,7 @@ def train():
     model = get_model()
 
     print('Model Summary')
-    print model.summary()
+    print(model.summary())
 
     model.compile(loss = keras.losses.categorical_crossentropy, 
     optimizer=keras.optimizers.Adam(),
@@ -87,36 +86,20 @@ def train():
     # SAVE
 
     print('Saving model')
-    model.save('my_model.h5')  # creates a HDF5 file 'my_model.h5'
+    model.save('recognition_sign_model.h5')  # creates a HDF5 file 'recognition_sign_model.h5'
     del model  # deletes the existing model
 
 
-def classify_gesture(image):
+def classify_gesture(image, model):
 
-    print('Classifying hand gesture')
-
-    print('Load model')
-    model = load_model('my_model.h5')
-
-    print('Predict')
+    print('Classifying hand gesture!')
     images = np.array([ image ])
     return model.predict(images)
 
 
 if __name__ == '__main__':
-
-    dataset_path = 'data/language/'
-    test_data = pd.read_csv(os.path.join(dataset_path, 'sign_mnist_test.csv'))
-    X_test = test_data.iloc[:, 1:].values
-    X_test = X_test / 255.
-    X_test = X_test.reshape(X_test.shape[0], 28, 28, 1)
-    print X_test[0]
-    print type(X_test)
-    print X_test.shape
-    # <type 'numpy.ndarray'>
-    # (7172, 28, 28, 1)
     
-    if not os.path.isfile('my_model.h5'):
+    if not os.path.isfile('recognition_sign_model.h5'):
         print('Train the classification model')
         train()
     else:

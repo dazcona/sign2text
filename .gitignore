@@ -5,4 +5,4 @@ notebooks/.ipynb_checkpoints/*
 .vscode/
 env/
 *.pyc
-my_model.h5
+*.h5
